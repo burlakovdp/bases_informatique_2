@@ -1,0 +1,19 @@
+#Ex.1
+
+def u(n):
+    if n == 0:
+        return 234
+    else:
+        return 2/3*u(n-1)+1/2
+
+def fact(n):
+    if n == 0:
+        return 1
+    else:
+        return n * fact(n-1)
+
+def somme_cube(n):
+    if n <= 1:
+        return 1
+    else:
+        return n**3 + somme_cube(n-1)
