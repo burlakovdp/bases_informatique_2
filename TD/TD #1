@@ -28,3 +28,19 @@ def le(n):
 assert(le(3)) == 1
 assert(le(5)) == 2
 assert(le(11)) == 3
+
+#Ex.3
+
+def expo_rapide(a,b):
+    if b == 0:
+        return 1
+    elif b % 2 == 0:
+        return expo_rapide(a*a, b//2)
+    else:
+        return a * expo_rapide(a, b-1)
+    
+assert(expo_rapide(1,0)) == 1
+assert(expo_rapide(2,4)) == 16
+assert(expo_rapide(3,2)) == 9
+assert(expo_rapide(3,3)) == 27
+
