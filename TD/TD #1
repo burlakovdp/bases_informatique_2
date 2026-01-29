@@ -44,3 +44,28 @@ assert(expo_rapide(2,4)) == 16
 assert(expo_rapide(3,2)) == 9
 assert(expo_rapide(3,3)) == 27
 
+#Ex.4
+
+def affiche_et_calcule_pgcd_naïf(n,m):
+    if n == m:
+        print(f'calcule le pgcd de n={n} et m={m}')
+        return f'Le PGCD de {n} et {m} vaut {n}'
+    elif n <= m:
+        print(f'calcule le pgcd de n={n} et m={m}')
+        return affiche_et_calcule_pgcd_naïf(m, n)
+    print(f'calcule le pgcd de n={n} et m={m}')
+    return affiche_et_calcule_pgcd_naïf(n-m, m) 
+    
+#print(affiche_et_calcule_pgcd_naïf(21,15))
+
+def affiche_et_calcule_pgcd(n,m):
+    if n <= m:
+        n, m = m, n
+    if m == 0:
+        print(f'calcule le pgcd de n={n} et m={m}')
+        return f'Le PGCD de {n} et {m} vaut {n}'
+    print(f'calcule le pgcd de n={n} et m={m}')
+    return affiche_et_calcule_pgcd(n-(n//m)*m, m) 
+
+#print(affiche_et_calcule_pgcd(12,42))
+
