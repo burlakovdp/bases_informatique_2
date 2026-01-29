@@ -69,3 +69,60 @@ def affiche_et_calcule_pgcd(n,m):
 
 #print(affiche_et_calcule_pgcd(12,42))
 
+#Ex.5
+"""
+import tkinter as tk
+root = tk.Tk()
+root.title("La fureur du dragon")
+Hauteur = 600
+Largeur = 600
+Dessin=tk.Canvas(root,height=Hauteur,width=Largeur,bg="white")
+Dessin.pack()
+A = (175, 400)
+B = (425, 400)
+
+
+def coude(A,B):
+    x_a = A[0]
+    y_a = A[1]
+    x_b = B[0]
+    y_b = B[1]
+    M = ((x_a+x_b)//2,(y_a+y_b)//2)
+    x_m = M[0]
+    y_m = M[1]
+    AM = (x_m-x_a,y_m-y_a)
+    x_am = AM[0]
+    y_am = AM[1]
+    MC = (-1*y_am, x_am)
+    x_mc = MC[0]
+    y_mc = MC[1]
+    C = (x_m+x_mc, y_m+y_mc)
+    return (C[0], C[1])
+root.mainloop()
+"""
+#Ex.6
+
+def recherche_aux(x, tableau, a, b):
+    pass
+
+def recherche(x, tableau):
+    recherche_aux(x, tableau, 0, len(tableau))
+
+#Ex.7
+
+def affiche_calcul_binaire(n):
+    if n <= 1:
+        return 1
+    print(f'{n-(2*(n//2))} car {n} = 2 x {n//2} + {n-(2*(n//2))}')
+    return affiche_calcul_binaire(n//2)
+
+#print(affiche_calcul_binaire(16))
+
+def affiche_binaire(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    return str(affiche_binaire(n//2)) + str(n%2)
+
+#print(affiche_binaire(100))
