@@ -103,10 +103,22 @@ root.mainloop()
 #Ex.6
 
 def recherche_aux(x, tableau, a, b):
-    pass
+    if tableau == []:
+        return -1
+    i = (a+b)//2
+    m = tableau[i] 
+    if m == x:
+        return i
+    if (a == 0 and b == 0) or a-b == 1 or b-a == 1 or len(tableau) == 1:
+        return -1
+    elif  x < m:
+        return recherche_aux(x, tableau, a, len(tableau[a:i]))
+    elif x > m:
+        return recherche_aux(x, tableau, i, len(tableau))
 
 def recherche(x, tableau):
-    recherche_aux(x, tableau, 0, len(tableau))
+    return recherche_aux(x, tableau, 0, len(tableau))
+
 
 #Ex.7
 
