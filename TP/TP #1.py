@@ -138,3 +138,5 @@ def affiche_binaire(n):
     return str(affiche_binaire(n//2)) + str(n%2)
 
 #print(affiche_binaire(100))
+
+#check my github
