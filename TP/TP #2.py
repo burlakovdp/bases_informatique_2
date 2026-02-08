@@ -93,7 +93,7 @@ def tri_hollandais(L):
     r = len(L)-1
     i = 0
     while True:
-        if i >= r:
+        if i > r:
             return
         if L[i] == 'B':
             L[b], L[i] = L[i], L[b]
