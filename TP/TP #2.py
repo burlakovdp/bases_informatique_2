@@ -85,3 +85,22 @@ def cree_liste_triee(N):
 def tri_comptage(L):
     return cree_liste_triee(liste_nombre_occurrences(L))
 
+
+#Ex.4
+
+def tri_hollandais(L):
+    b = 0
+    r = len(L)-1
+    i = 0
+    while True:
+        if i >= r:
+            return
+        if L[i] == 'B':
+            L[b], L[i] = L[i], L[b]
+            b += 1
+            i += 1
+        elif L[i] == 'R':
+            L[r], L[i] = L[i], L[r]
+            r -= 1
+        elif L[i] == 'W':
+            i += 1
