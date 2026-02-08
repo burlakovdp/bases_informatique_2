@@ -20,8 +20,6 @@ L = [1, 2, 3]
 
 #Ex.2
 
-
-
 def fusion(L1, L2, ac = []):
     if len(L1) == 0:
         ac += L2
@@ -37,17 +35,53 @@ def fusion(L1, L2, ac = []):
         return fusion(L1, L2[len(ac):])
 
 def tri_fusion(L):
-    if len(L) ==  2:
-        return fusion(list(L[0]), list(L[1]))
+    if len(L) < 2:
+        return L
     elif len(L) % 2 != 0:
-        tri_fusion(L[:len(L)//2+1]) + tri_fusion(L[len(L)//2+1:])
+        L1 = L[:len(L)//2+1]
+        L2 = L[len(L)//2+1:]
     else:
-        tri_fusion(L[:len(L)//2]) + tri_fusion(L[len(L)//2:])
-
+        L1 = L[:len(L)//2]
+        L2 = L[len(L)//2:]
+        
 
         
 L = [7, 6, 5, 4, 3, 2, 1, 0]
-L1 = [3, 2, 1, 0]
+L1 = [5, 1, 3, 4, 2]
+L2 = [4, 3]
+L3 = [1]
 #print(fusion([3], [2]))
-print(tri_fusion(L1))
+#print(fusion(L2, L3))
+#print(tri_fusion(L1))
+
+
+
+#Ex.3
+
+def max_list(L):
+    tmp = -1
+    for i in range(len(L)):
+        if L[i] > tmp:
+            tmp = L[i]
+    return tmp
+
+def liste_nombre_occurrences(L):
+    res = []
+    for i in range(max_list(L)+1):
+        counter = 0
+        for j in range(len(L)):
+            if i == L[j]:
+                counter += 1
+        res.append(counter)
+    return res
+
+def cree_liste_triee(N):
+    res = []
+    for i in range(len(N)):
+        for j in range(N[i]):
+            res.append(i)
+    return res
+
+def tri_comptage(L):
+    return cree_liste_triee(liste_nombre_occurrences(L))
 
