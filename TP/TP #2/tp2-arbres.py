@@ -52,5 +52,32 @@ def liste_profondeur(A, n):
         res += liste_profondeur(fd(A), n-1)
     return res
 
-A1 = arbre('+', arbre('*', 1, 2), 1)
+A1 = arbre('+', arbre('*', 1, 1), arbre('/', arbre('+', 2, 1), 1))
+
+def profondeur_max_pairs(A):
+    a = 1
+    b = 1
+    if est_feuille(A):
+        if A % 2 == 0:
+            return 0
+        else:
+            return None
+    else:
+        tmp = profondeur_max_pairs(fg(A))
+        if tmp == None:
+            a = None
+        else:
+            a += tmp
+        tmp = profondeur_max_pairs(fd(A))
+        if tmp == None:
+            b = None
+        else:
+            b += tmp
+    if a == None and b == None:
+        return None
+    elif a == None:
+        return b
+    elif b == None:
+        return a
+    return max(a, b)
 
