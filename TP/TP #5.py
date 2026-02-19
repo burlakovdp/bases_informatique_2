@@ -20,41 +20,28 @@ L = [1, 2, 3]
 
 #Ex.2
 
-def fusion(L1, L2, ac = []):
+def fusion(L1, L2):
     if len(L1) == 0:
-        ac += L2
-        return ac
+        return L2
     elif len(L2) == 0:
-        ac += L1
-        return ac
-    if L1[0] < L2[0]:
-        ac.append(L1[0])
-        return fusion(L1[len(ac):], L2)
-    elif L2[0] < L1[0]:
-        ac.append(L2[0])
-        return fusion(L1, L2[len(ac):])
-
+        return L1
+    else:
+        if L1[0] > L2[0]:
+            return L2[:1] + fusion(L1, L2[1:])
+        return L1[:1] + fusion(L1[1:], L2) 
+        
 def tri_fusion(L):
     if len(L) < 2:
         return L
-    elif len(L) % 2 != 0:
-        L1 = L[:len(L)//2+1]
-        L2 = L[len(L)//2+1:]
     else:
-        L1 = L[:len(L)//2]
-        L2 = L[len(L)//2:]
-        
-
-        
-L = [7, 6, 5, 4, 3, 2, 1, 0]
-L1 = [5, 1, 3, 4, 2]
-L2 = [4, 3]
-L3 = [1]
-#print(fusion([3], [2]))
-#print(fusion(L2, L3))
-#print(tri_fusion(L1))
-
-
+        L1 = tri_fusion(L[:len(L)//2])
+        L2 = tri_fusion(L[len(L)//2:])
+        return fusion(L1, L2)
+    
+assert(tri_fusion([])) == []
+assert(tri_fusion([1, 2, 3, 4, 5])) == [1, 2, 3, 4, 5]
+assert(tri_fusion([5, 4, 3, 2, 1])) == [1, 2, 3, 4, 5]
+assert(tri_fusion([4, 5, 2, 1, -1, 0, 20])) == [-1, 0, 1, 2, 4, 5, 20]
 
 #Ex.3
 
