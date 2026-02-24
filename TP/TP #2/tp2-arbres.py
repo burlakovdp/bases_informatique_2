@@ -83,7 +83,7 @@ def profondeur_max_paire(A):
         return max(1+g, 1+d)  
 
 #print(profondeur_max_paire(A1))
-A1 = arbre('+', arbre('*', 1, 4), arbre('/', arbre('+', 1, 1), 42))
+A1 = arbre('+', arbre('*', 1, 2), arbre('/', arbre('+', 3, 4), 5))
 
 def compter(A, op):
     if est_feuille(A):
@@ -108,5 +108,15 @@ def remplacer(A, op1, op2):
             return arbre(op2, g, d)
         else:
             return arbre(racine(A), g ,d)
-        
-print(remplacer(A1, '+', '-'))
+
+def miroir(A):
+    if est_feuille(A):
+        return A
+    else:
+        g = miroir(fg(A))
+        d = miroir(fd(A))
+        return arbre(racine(A), d, g)
+
+print(A1)
+print(arbre('+', arbre('/', 5, arbre('+', 4, 3)), arbre('*', 2, 1)))
+print(miroir(A1))
