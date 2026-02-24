@@ -96,4 +96,17 @@ def compter(A, op):
         else:
             return g + d
 
-print(compter(A1, '+'))
+#print(compter(A1, '+'))
+
+def remplacer(A, op1, op2):
+    if est_feuille(A):
+        return A
+    else:
+        g = remplacer(fg(A), op1, op2)
+        d = remplacer(fd(A), op1, op2)
+        if racine(A) == op1:
+            return arbre(op2, g, d)
+        else:
+            return arbre(racine(A), g ,d)
+        
+print(remplacer(A1, '+', '-'))
