@@ -1,6 +1,21 @@
 from pile import *
 from abe import *
 
+test = [1, 2, '-', 3, 4, '+', '*']
+
+
+def arboriser(npi):
+    signe = ['+', '-', '*', '/']
+    tmp = nouvelle_pile()
+    for e in npi:
+        if e in signe:
+            b = depile(tmp)
+            a = depile(tmp)
+            empile(tmp, arbre(e, a, b))
+        else:
+            empile(tmp, e)
+    return sommet(tmp)
+
 def calcul_direct(npi):
     signe = ['+', '-', '*', '/']
     tmp = nouvelle_pile()
