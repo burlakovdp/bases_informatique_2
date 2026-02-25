@@ -6,7 +6,7 @@ def nouvelle_pile():
 def empile(L,e):
         L.append(e)
 
-def dépile(L):
+def depile(L):
         if L == []:
                 raise PileErreur
         return L.pop()
