@@ -38,4 +38,30 @@ def calcul_direct(npi):
             empile(tmp, npi[i])
     return sommet(tmp)
 
-            
+def calcul_chaîne(liste):
+    signe = ['+', '-', '*', '/']
+    tmp = nouvelle_pile()
+    tmp_int = ''
+    for i in range(len(liste)):
+        if liste[i] == ' ':
+            if tmp_int != '':
+                empile(tmp, int(tmp_int))
+                tmp_int = ''
+            else:
+                pass
+        elif liste[i] in signe:
+            b = depile(tmp)
+            a = depile(tmp)
+            if liste[i] == '-':
+                empile(tmp, a-b)
+            elif liste[i] == '+':
+                empile(tmp, a+b)
+            elif liste[i] == '*':
+                empile(tmp, a*b)
+            elif liste[i] == '/':
+               empile(tmp, a/b)
+        else:
+            tmp_int += liste[i]
+    if est_vide(tmp):
+        return int(tmp_int)
+    return sommet(tmp)
