@@ -2,7 +2,7 @@ from pile import *
 from abe import *
 
 test = [1, 2, '-', 3, 4, '+', '*']
-
+A1 = arbre('+', arbre('*', 1, 4), arbre('/', arbre('+', 1, 1), 42))
 
 def arboriser(npi):
     signe = ['+', '-', '*', '/']
@@ -80,3 +80,21 @@ def calcul_chaîne(liste):
     if est_vide(tmp):
         return int(tmp_int)
     return sommet(tmp)
+
+def valeur(A):
+    if est_feuille(A):
+        return A
+    else:
+        g = valeur(fg(A))
+        d = valeur(fd(A))
+        if racine(A) == '-':
+            return g-d
+        elif racine(A) == '+':
+            return g+d
+        elif racine(A) == '*':
+            return g*d
+        else:
+            return g/d
+        
+def calcul(npi):
+    return(valeur(arboriser(npi)))
