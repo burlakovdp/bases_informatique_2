@@ -1,3 +1,5 @@
+from abe import *
+
 #ex.1
 def intérieur(ch):
     return ch[1:len(ch)-1]
@@ -71,3 +73,39 @@ def decoupage_formule(chaîne):
         return None
     return (chaîne[:i], chaîne[i], chaîne[i+1:])
 
+#ex.6
+
+
+#ex.7
+def est_arithmétique(A):
+    if est_feuille(A):
+        if type(A) == int:
+            return True
+        return False
+    else:
+        g = est_arithmétique(fg(A))
+        d = est_arithmétique(fd(A))
+        if g == False or d == False:
+            return False
+        return True
+    
+def calculer_arbre(A):
+    if est_arithmétique(A):
+        if est_feuille(A):
+            return A
+        else:
+            g = calculer_arbre(fg(A))
+            d = calculer_arbre(fd(A))
+            if racine(A) == '+':
+                return g + d
+            elif racine(A) == '-':
+                return g - d
+            elif racine(A) == '*':
+                return g * d
+            elif racine(A) == '/':
+                return g / d
+    else:
+        raise(ValueError)
+
+def évaluer(chaîne):
+    pass
