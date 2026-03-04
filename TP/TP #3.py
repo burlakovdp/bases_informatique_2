@@ -75,7 +75,6 @@ def decoupage_formule(chaîne):
 
 #ex.6
 
-
 #ex.7
 def est_arithmétique(A):
     if est_feuille(A):
@@ -109,3 +108,15 @@ def calculer_arbre(A):
 
 def évaluer(chaîne):
     pass
+
+#ex.8
+
+def variables(A):
+    if est_feuille(A):
+        if type(A) != int:
+            return list(A)
+        return []
+    else:
+        g = variables(fg(A))
+        d = variables(fd(A))
+        return g + d
