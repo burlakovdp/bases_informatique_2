@@ -35,3 +35,39 @@ def remplacement_négatif(ch):
     return res
 
 #ex.3
+SIGNE = {'+':')))+(((', '-':')))-(((', '*':'))*((', '/':'))/((', '^':')^(', '(':'((((', ')':'))))'}
+
+#ex.4
+
+def parenthesage(formule):
+    tmp = '(' + formule + ')'
+    tmp = suppression_espaces(tmp)
+    tmp = remplacement_négatif(tmp)
+    res = ''
+    for i in range(len(tmp)):
+        if tmp[i] in SIGNE:
+            res += SIGNE[tmp[i]]
+        else:
+            res += tmp[i]
+    return res
+
+#ex.5
+nos_signes = "+-*/^<=>|&~"
+
+def indice_racine(chaîne):
+    niveau = 0
+    for i in range(len(chaîne)-1, 1, -1):
+        if chaîne[i] == ")":
+            niveau += 1
+        elif chaîne[i] == "(":
+            niveau -= 1
+        elif chaîne[i] in nos_signes and niveau == 0:
+            return i
+    return None
+
+def decoupage_formule(chaîne):
+    i = indice_racine(chaîne)
+    if i == None:
+        return None
+    return (chaîne[:i], chaîne[i], chaîne[i+1:])
+
