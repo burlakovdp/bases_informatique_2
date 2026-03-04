@@ -58,7 +58,7 @@ nos_signes = "+-*/^<=>|&~"
 
 def indice_racine(chaîne):
     niveau = 0
-    for i in range(len(chaîne)-1, 1, -1):
+    for i in range(len(chaîne)-1, -1, -1):
         if chaîne[i] == ")":
             niveau += 1
         elif chaîne[i] == "(":
@@ -74,6 +74,17 @@ def decoupage_formule(chaîne):
     return (chaîne[:i], chaîne[i], chaîne[i+1:])
 
 #ex.6
+def arboriser_propre(chaîne):
+    tmp = decoupage_formule(chaîne)
+    if tmp == None:
+        if chaîne.isdigit():
+            return int(chaîne)
+        elif chaîne.isalpha():
+            return chaîne
+        elif chaîne[0] == '(':
+            return arboriser_propre(intérieur(chaîne))
+    else:
+        return arbre(tmp[1], arboriser_propre(tmp[0]), arboriser_propre(tmp[2]))
 
 #ex.7
 def est_arithmétique(A):
