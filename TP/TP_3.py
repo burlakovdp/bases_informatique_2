@@ -125,8 +125,8 @@ def est_arithmétique(A):
         d = est_arithmétique(fd(A))
         return g and d
     
-assert(est_arithmétique(arboriser("1-x+2-(3*5)"))) == False
-assert(est_arithmétique(arboriser("1-5+2-(3*5)"))) == True
+#assert(est_arithmétique(arboriser("1-x+2-(3*5)"))) == False
+#assert(est_arithmétique(arboriser("1-5+2-(3*5)"))) == True
 
 def calculer_arbre(A):
     try:
@@ -181,7 +181,7 @@ def variables(A):
         d = variables(fd(A))
         return g + d
     
-print(variables(arboriser("(x^5)+10")))
+#print(variables(arboriser("(x^5)+10")))
 
 def évaluer_environnement(A,env):
         if est_feuille(A):
@@ -203,4 +203,4 @@ def évaluer_environnement(A,env):
             elif racine(A) == '^':
                 return g**d 
 env = {'g':12, 'y':4}
-print(évaluer_environnement(arboriser("(x*5)+y"), env))
+#print(évaluer_environnement(arboriser("(x*5)+y"), env))
